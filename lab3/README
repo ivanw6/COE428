@@ -1,0 +1,59 @@
+Ivan Wang
+501086429
+
+QUESTIONS:
+
+1. A brief summary of what you accomplished and what (if any) parts you did not
+complete or bugs that you are aware of but have not fixed.
+
+2. Analysis (including equations for number of moves, swaps and compares as a
+function of n) for the best-, average- and worst-case behaviors of InsertionSort and
+MergeSort, 
+
+ANSWERS:
+
+1. I have completed implementing the insertionSort as well as the mergeSort. The mergeSort algorithm does not use the mySwap function from metrics.c as many of the sorting is executed through copying elements and setting the elements in specific indexes.
+Both algorithms run correctly, however there is a small bug in the Driver class I believe, when using either insertionSort or mergeSort in the CMD prompt, after inputting an argument of numbers it will indefinitely buffer (run) unless you manually enter (ctrl+d) which exits the buffering and actually outputs the correct output.
+
+2. 
+
+insertionSort:
+
+Best Case - the inputted array is already sorted, meaning the inner while loop of insertionSort algorithm is never executed. Each elemented is compared to its left element once, the number of comparisons is (n - 1) and the number of swaps is 0. The time complexity equation for the best case is O(n), where O is Omega.
+When (1, 2, 3, 4, 5, 6) is inputted:
+Comparisons: 5
+Swaps: 0
+Copy operations: 5
+
+Worst Case - the inputted array is in reverse order, the while loop is definitely executed in this case, every element in the array has to be compared to all of the other elements to find the correct position. In lecture, the while loop is determined to have a quadratic time complexity, meaning for the worst case the time complexity equation is O(n^2), where O is Omega.
+When (6, 5, 4, 3, 2, 1) is inputted:
+Comparisons: 20
+Swaps: 15
+Copy operations: 5
+
+Average Case - the inputted array is randomly sorted, in this case the while loop is insertionSort is executed and the while loop is determined to have a time complexity that is quadratic. However since this scenario is not the worst case and some elements of may be a little sorted the time complexity equation for this case is between O(n^2) and O(n), where O is Omega.
+When (6, 1, 2, 4, 5, 3) is inputted:
+Comparisons: 12
+Swaps: 7
+Copy operations: 5
+
+mergeSort:
+When the mergeSort is analyzed through a recursive tree it becomes apparent that mergeSort does not have significant differences from its worst to best case. The time complexity equation for every case is O(nlog(n)), where O is Omega. 
+
+Best Case - same as insertion sort, the best case is when the inputted array is already sorted, the algorithm just remerges the divided sub-arrays. In this case the process of dividing and merging time complexity is still O(nlog(n)).
+When (1, 2, 3, 4, 5, 6) is inputted:
+Comparisons: 9
+Swaps: 0
+Copy operations: 32
+
+Worst Case - the inputted array is in reverse order, after the array is divided into sub-arrays the algorithm has to repeatedly merge and sort every sub-array. However since every time a sub array is merged it becomes a little bit sorted meaning that there is not real worst case once it merges back to the original array as the sub-arrays are already a little sorted. In this case the time complexity again is still O(nlog(n)).
+When (6, 5, 4, 3, 2, 1) is inputted:
+Comparisons: 7
+Swaps: 0
+Copy operations: 32
+
+Average Case - the inputted array is randomly sorted, this case is similar to the worst case where some sub-arrays may already be sorted and there will be comparisons. Still the time complexity is O(nlog(n)).
+When (6, 1, 2, 4, 5, 3) is inputted:
+Comparisons: 10
+Swaps: 0
+Copy operations: 32
